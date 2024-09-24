@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-import '../../../../core/theme/q_colors.dart';
-import '../../../movies/domain/entities/movie.dart';
-import '../../../movies/presentation/view/widgets/genres_widget.dart';
-import '../../../movies/presentation/view/widgets/movie_card_widget.dart';
+import '../../../core/theme/q_colors.dart';
+import '../../movies/domain/entities/movie.dart';
+import '../../movies/presentation/view/widgets/genres_widget.dart';
+import '../../movies/presentation/view/widgets/movie_card_widget.dart';
 
 class MovieDetailsPage extends StatelessWidget {
   const MovieDetailsPage({super.key, required this.movie});

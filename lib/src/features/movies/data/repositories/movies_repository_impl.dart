@@ -24,8 +24,8 @@ class MoviesRepositoryImpl implements MoviesRepository {
       try {
         final result = await _localMoviesDataSource.getLocalMovies();
         return Right(result);
-      } on ServerException catch (e) {
-        return Left(ServerFailrue(message: e.errorMessage, statusCode: e.statusCode));
+      } on CacheException catch (e) {
+        return Left(CacheFailure(message: e.errorMessage, statusCode: e.statusCode));
       }
     } else {
       try {
@@ -33,7 +33,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
         await _localMoviesDataSource.cacheMovies(result);
         return Right(result);
       } on ServerException catch (e) {
-        return Left(ServerFailrue(message: e.errorMessage, statusCode: e.statusCode));
+        return Left(ServerFailure(message: e.errorMessage, statusCode: e.statusCode));
       } on CacheException catch (e) {
         return Left(CacheFailure(message: e.errorMessage, statusCode: e.statusCode));
       }
@@ -46,14 +46,16 @@ class MoviesRepositoryImpl implements MoviesRepository {
       try {
         final result = await _localMoviesDataSource.getLocalGenres();
         return Right(result);
-      } on ServerException catch (e) {
-        return Left(ServerFailrue(message: e.errorMessage, statusCode: e.statusCode));
+      } on CacheException catch (e) {
+        return Left(CacheFailure(message: e.errorMessage, statusCode: e.statusCode));
       }
     } else {
       try {
         final result = await _remoteMovieDataSource.getGenres();
         await _localMoviesDataSource.cacheGenres(result);
         return Right(result);
+      } on ServerException catch (e) {
+        return Left(ServerFailure(message: e.errorMessage, statusCode: e.statusCode));
       } on CacheException catch (e) {
         return Left(CacheFailure(message: e.errorMessage, statusCode: e.statusCode));
       }
