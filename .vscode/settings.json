@@ -1,0 +1,17 @@
+{
+    "dart.lineLength": 120,
+    "[dart]": {
+      "editor.rulers": [120],
+      "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit",
+        "source.sortImports": "explicit",
+        "formatOnSave": "explicit"
+      }
+    },
+    "typescript.tsdk": "./functions/node_modules/typescript/lib",
+    "prettier.configPath": "./functions/tsconfig.json",
+    "cSpell.words": [
+      "roboto"
+    ]
+  }
